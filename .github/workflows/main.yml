@@ -37,4 +37,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: firmware-build
-          path: micropython/ports/rp2/build-RPI_PICO/firmware.uf2
+          path: ports/rp2/build-RPI_PICO/firmware.uf2
