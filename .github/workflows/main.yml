@@ -26,11 +26,10 @@ jobs:
 
       - name: Build Firmware
         run: |
+          git submodule update --init --recursive user_modules/lv_binding_micropython
+          make -C ports/rp2 BOARD=RPI_PICO submodules
           make -C mpy-cross
-          cd ports/rp2
-          make submodules
-          make clean
-          make USER_C_MODULES=../../user_modules/lv_binding_micropython/micropython.cmake
+          make -j -C ports/rp2 BOARD=RPI_PICO USER_C_MODULES=../../user_modules/lv_binding_micropython/micropython.cmake
 
       - name: Upload Firmware Artifact
         uses: actions/upload-artifact@v4
